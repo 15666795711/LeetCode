@@ -1305,5 +1305,18 @@ let symmetricTree = {
  * @param {*} root 
  */
 var levelOrder = function(root) {
-  
+  const result = [];
+  const parent = [root];
+  while(parent.length !== 0){
+    const len = parent.length;
+    result.push([])
+    for(let i=0;i<len;i++){
+      let node = parent.shift();
+      result[result.length-1].push(node.val);
+      if(node.left) parent.push(node.left);
+      if(node.right) parent.push(node.right);
+    }
+  }
+  return result;
 };
+// levelOrder(symmetricTree)
